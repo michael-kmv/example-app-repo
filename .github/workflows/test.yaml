@@ -2,7 +2,7 @@
 name: Test
 on: push
 jobs:
-  laravel-test:
+  laravel-tests:
     runs-on: ubuntu-latest
     container:
       image: kirschbaumdevelopment/laravel-test-runner:7.3
@@ -25,7 +25,8 @@ jobs:
           composer install --no-scripts
       - name: Prepare Laravel Application
         run: |
-          cp .env.example .env.testing
+          cp ".env.example" ".env.testing"
+          cp ".env.example" ".env"
           php artisan key:generate
       - name: Run Testsuite
         run: vendor/bin/phpunit tests/
